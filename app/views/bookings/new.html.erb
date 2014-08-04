@@ -1,0 +1,28 @@
+<h2>Find your jam</h2>
+
+<%= form_for @booking do |form| %>
+  <section class="user-info">
+    <%= form.label :first_name, "First Name" %>
+    <%= form.text_field :first_name %>
+    <%= form.label :last_name, "Last Name" %>
+    <%= form.text_field :last_name %>
+    <%= form.label :email, "Email" %>
+    <%= form.text_field :email %>
+    <%= form.label :phone, "Phone" %>
+    <%= form.text_field :phone %>
+    <%= form.label :special_requirements, "Special requirements" %>
+    <%= form.text_area :special_requirements %>
+  </section>
+
+  <% @days.each do |weekday, time_slots| %>
+    <%= weekday %>
+    <ul>
+      <li><%= form.collection_check_boxes :time_slot_ids, time_slots, :id, :label %></li>
+    </ul>
+  <% end %>
+
+
+
+
+<%= form.submit "Make booking" %>
+<% end %>
