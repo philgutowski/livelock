@@ -6,6 +6,7 @@ class BookingsController < ApplicationController
 
   def create
     Booking.create(booking_params)
+
     redirect_to root_path
   end
 
@@ -18,6 +19,7 @@ class BookingsController < ApplicationController
       :email,
       :phone,
       :special_requirements,
+      time_slot_ids: [],
     )
   end
 end
