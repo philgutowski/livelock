@@ -17,13 +17,13 @@ ActiveRecord::Schema.define(version: 20140804141731) do
   enable_extension "plpgsql"
 
   create_table "bookings", force: true do |t|
-    t.string   "first_name",           null: false
-    t.string   "last_name",            null: false
-    t.string   "email",                null: false
-    t.string   "phone",                null: false
-    t.text     "special_requirements", null: false
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.string   "first_name",                        null: false
+    t.string   "last_name",                         null: false
+    t.string   "email",                             null: false
+    t.string   "phone",                             null: false
+    t.text     "special_requirements", default: ""
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   create_table "time_slots", force: true do |t|
