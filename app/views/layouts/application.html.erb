@@ -3,13 +3,14 @@
 <head>
   <title>Livelock</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<h1>LiveLock</h1>
-<h3><em>Automated Access Control for Music Studios</em></h3>
+<section class="header-container">
+  <h1>LiveLock</h1>
+  <h3><em>Automated Access Control for Music Studios</em></h3>
+</section>
 
 <%= yield %>
 

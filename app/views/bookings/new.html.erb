@@ -1,25 +1,37 @@
-<h2>Find your jam</h2>
+<section class="booking-form-container">
+  <h2>Find your jam</h2>
 
-<%= form_for @booking do |form| %>
-  <section class="user-info">
-    <%= form.label :first_name, "First Name" %>
-    <%= form.text_field :first_name %>
-    <%= form.label :last_name, "Last Name" %>
-    <%= form.text_field :last_name %>
-    <%= form.label :email, "Email" %>
-    <%= form.text_field :email %>
-    <%= form.label :phone, "Phone" %>
-    <%= form.text_field :phone %>
-    <%= form.label :special_requirements, "Special requirements" %>
-    <%= form.text_area :special_requirements %>
-  </section>
+  <%= form_for @booking do |form| %>
+    <div class="time-slots-container">
+      <% @days.each do |weekday, time_slots| %>
+        <div class="day-of-week">
+          <h4><%= weekday %></h4>
+          <ul>
+            <li><%= form.collection_check_boxes :time_slot_ids, time_slots, :id, :label %></li>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+    <div class="user-info">
+      <div class="form-column">
+        <%= form.label :first_name, "First Name" %>
+        <%= form.text_field :first_name %>
+        <%= form.label :last_name, "Last Name" %>
+        <%= form.text_field :last_name %>
+      </div>
+      <div class="form-column">
+        <%= form.label :email, "Email" %>
+        <%= form.text_field :email %>
+        <%= form.label :phone, "Phone" %>
+        <%= form.text_field :phone %>
+      </div>
+      <div class="form-column-full-span">
+        <%= form.label :special_requirements, "Special requirements" %>
+        <%= form.text_area :special_requirements %>
+      </div>
+    </div>
 
-  <% @days.each do |weekday, time_slots| %>
-    <%= weekday %>
-    <ul>
-      <li><%= form.collection_check_boxes :time_slot_ids, @days, :id, :started_at %></li>
-    </ul>
+
+    <%= form.submit "Make booking" %>
   <% end %>
-
-<%= form.submit "Make booking" %>
-<% end %>
+</section>
