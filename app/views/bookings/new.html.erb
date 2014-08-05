@@ -17,7 +17,7 @@
   <% @days.each do |weekday, time_slots| %>
     <%= weekday %>
     <ul>
-      <li><%= form.collection_check_boxes :time_slot_ids, TimeSlot.all, :id, :started_at %></li>
+      <li><%= form.collection_check_boxes :time_slot_ids, @days, :id, :started_at %></li>
     </ul>
   <% end %>
 
