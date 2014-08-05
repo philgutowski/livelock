@@ -5,7 +5,7 @@ class CreateBookings < ActiveRecord::Migration
       t.string :last_name, index: true, null: false
       t.string :email, index: true, null: false
       t.string :phone, null: false
-      t.text :special_requirements, default: ""
+      t.text :special_requirements, null: false
 
       t.timestamps null: false
     end
