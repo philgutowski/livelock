@@ -1,5 +1,5 @@
 # Handle the change of year from Dec to Jan
-# Sort TimeSlot so when grabbing .last we are getting the most recent date/time
+# Sort TimeSlot so .last is the most recent date/time
 # Make a default to use DateTime.now if there are not any previous TimeSlots in the table
 
 task make_time_slots: :environment do 

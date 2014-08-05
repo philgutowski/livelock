@@ -1,0 +1,47 @@
+class TimeSlotCreator
+
+  if TimeSlot.exists?
+  end
+
+  def run
+    most_recent_slot = TimeSlot.most_recent
+    start_month = find_start_month(most_recent_slot)
+    year = find_year(most_recent_slot)
+    create_month_of_time_slots(start_month, year)
+  end
+
+  def find_start_month(most_recent_slot)
+    most_recent_month = most_recent_slot.started_at.mon
+    month_number = (most_recent_month.to_i + 1)
+    if month_number > 12
+      month_number % 12
+    else
+      month_number
+    end
+  end
+
+  def find_year(most_recent_slot)
+    most_recent_year = most_recent_slot.started_at.year
+    if find_start_month(most_recent_slot) == 12
+      most_recent_year + 1
+    else
+      most_recent_year
+    end
+  end
+
+  def create_month_of_time_slots(start_month, year)
+    Time.days_in_month(start_month)
+    days_of_month = (1..Time.days_in_month(start_month)).to_a
+    days_of_month.each do |day|
+      save_time_slots(day, start_month, year)
+    end
+  end
+
+  def save_time_slots(day, start_month, year)
+    [9, 12, 15, 18, 21].each do |hour|
+      time_slot = TimeSlot.new
+      time_slot.started_at = DateTime.new(year, start_month, day, hour)
+      time_slot.save
+    end
+  end
+end
