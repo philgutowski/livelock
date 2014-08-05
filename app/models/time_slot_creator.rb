@@ -9,9 +9,7 @@ class TimeSlotCreator
 
   def initialize_a_time_slot
     if !TimeSlot.exists?
-      new_time_slot = TimeSlot.new
-      new_time_slot.started_at = 1.month.ago
-      new_time_slot.save
+      TimeSlot.create(started_at: 1.month.ago)
     end
   end
 
@@ -31,7 +29,6 @@ class TimeSlotCreator
   end
 
   def create_month_of_time_slots(start_month, year)
-    Time.days_in_month(start_month)
     days_of_month = (1..Time.days_in_month(start_month)).to_a
     days_of_month.each do |day|
       save_time_slots(day, start_month, year)
@@ -40,9 +37,8 @@ class TimeSlotCreator
 
   def save_time_slots(day, start_month, year)
     [9, 12, 15, 18, 21].each do |hour|
-      time_slot = TimeSlot.new
-      time_slot.started_at = DateTime.new(year, start_month, day, hour)
-      time_slot.save
+      start_date = DateTime.new(year, start_month, day, hour)
+      TimeSlot.create(started_at: start_date)
     end
   end
 end
