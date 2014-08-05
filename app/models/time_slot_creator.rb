@@ -29,7 +29,7 @@ class TimeSlotCreator
   end
 
   def create_month_of_time_slots(start_month, year)
-    days_of_month = (1..Time.days_in_month(start_month)).to_a
+    days_of_month = (1..Time.days_in_month(start_month, year)).to_a
     days_of_month.each do |day|
       save_time_slots(day, start_month, year)
     end
