@@ -13,10 +13,6 @@ class TimeSlot < ActiveRecord::Base
     started_at.strftime("%A")
   end
 
-  def slot_date
-    started_at.to_date
-  end
-
   def label
     "#{started_at.hour} to #{ended_at.hour}"
   end
