@@ -6,7 +6,11 @@ class BookingsController < ApplicationController
   end
 
   def create
-    Booking.create(booking_params)
+    booking = Booking.new(booking_params)
+
+    if booking.save
+      invite_lockitron_user
+    end
     redirect_to root_path
   end
 
@@ -14,12 +18,19 @@ class BookingsController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(
-      :first_name,
-      :last_name,
+      :fullname,
       :email,
       :phone,
       :special_requirements,
       time_slot_ids: [],
+    )
+  end
+
+  def lockitron_params
+    params.require(:booking).permit(
+      :phone,
+      :email,
+      :fullname,
     )
   end
 
@@ -28,5 +39,14 @@ class BookingsController < ApplicationController
     beginning_of_week = today.at_beginning_of_week
     end_of_week = today.at_end_of_week
     (beginning_of_week .. end_of_week)
+  end
+
+  def invite_lockitron_user
+    user = Lockitron::User.new(ENV['TOKEN'])
+    lock = user.locks.first
+
+    lock.as(user) do |l|
+      l.invite(lockitron_params.symbolize_keys)
+    end
   end
 end
