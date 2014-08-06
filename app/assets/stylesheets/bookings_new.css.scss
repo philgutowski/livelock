@@ -1,0 +1,30 @@
+.booking-form-container {
+  @include outer-container;
+}
+
+.time-slots-container {
+  @include outer-container;
+  margin-top: 25px;
+  .day-of-week {
+    @include span-columns(2);
+  }
+
+  input {
+  }
+}
+
+.user-info {
+  @include outer-container;
+
+  .form-column {
+    @include span-columns(6);
+    margin: 0;
+    padding: 10px 10px;
+  }
+
+  .form-column-full-span {
+    @include span-columns(12);
+    margin: 0;
+    padding: 0 10px;
+  }
+}
