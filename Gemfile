@@ -12,3 +12,7 @@ gem 'bourbon'
 gem 'neat'
 gem 'bitters'
 gem 'lockitron', '~> 1.1'
+
+group :development do
+  gem 'pry-rails'
+end
