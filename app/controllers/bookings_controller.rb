@@ -8,6 +8,9 @@ class BookingsController < ApplicationController
   def create
     booking = Booking.new(booking_params)
 
+    time_slots = TimeSlot.where(id: booking_params[:time_slot_ids])
+    time_slots.update_all(email: booking_params[:email])
+
     if booking.save
       invite_lockitron_user
     end
@@ -28,7 +31,6 @@ class BookingsController < ApplicationController
 
   def lockitron_params
     params.require(:booking).permit(
-      :phone,
       :email,
       :fullname,
     )
@@ -42,7 +44,7 @@ class BookingsController < ApplicationController
   end
 
   def invite_lockitron_user
-    user = Lockitron::User.new(ENV['TOKEN'])
+    user = Lockitron::User.new(ENV.fetch('TOKEN'))
     lock = user.locks.first
 
     lock.as(user) do |l|
