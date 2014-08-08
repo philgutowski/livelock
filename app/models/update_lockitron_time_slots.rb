@@ -17,6 +17,8 @@ class UpdateLockitronTimeSlots
     end
   end
 
+  private
+
   def update_lockitron_user
     user = Lockitron::User.new(ENV.fetch('TOKEN'))
     lock = user.locks.first
