@@ -48,7 +48,15 @@ class BookingsController < ApplicationController
     lock = user.locks.first
 
     lock.as(user) do |l|
-      l.invite(lockitron_params.symbolize_keys)
+      invite_hash = l.invite(lockitron_params.symbolize_keys)
+    end
+
+    update_lockitron_time_slots
+  end
+
+  def update_lockitron_time_slots
+    TimeSlot.pluck(:email).each do |email|
+      UpdateLockitronTimeSlots.new(email).run
     end
   end
 end

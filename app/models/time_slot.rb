@@ -5,8 +5,16 @@ class TimeSlot < ActiveRecord::Base
     order(:started_at).last
   end
 
+  def self.booked
+    where.not(booking_id: nil)
+  end
+
   def self.available
     where(booking_id: nil)
+  end
+
+  def self.today
+    where("DATE(started_at) = ?", Date.today)
   end
 
   def day_of_week

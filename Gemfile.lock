@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/chukdisc/lockitron.git
+  revision: a6246b4c0a337080c2a56ed50db8cef704c3237c
+  specs:
+    lockitron (1.1)
+      faraday
+      oauth2
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -63,9 +71,6 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.1)
     jwt (1.0.0)
-    lockitron (1.1)
-      faraday
-      oauth2
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -154,7 +159,7 @@ DEPENDENCIES
   dotenv-rails
   jbuilder (~> 2.0)
   jquery-rails
-  lockitron (~> 1.1)
+  lockitron!
   neat
   pg
   pry-rails
