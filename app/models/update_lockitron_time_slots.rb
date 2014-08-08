@@ -23,8 +23,8 @@ class UpdateLockitronTimeSlots
     user = Lockitron::User.new(ENV.fetch('TOKEN'))
     lock = user.locks.first
 
-    lock.as(user) do |user|
-      user.update(start: @start, expiration: @end, email: @email)
+    lock.as(user) do |authorized_lock|
+       authorized_lock.update(start: @start, expiration: @end, email: @email)
     end
   end
 end
