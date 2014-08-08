@@ -6,8 +6,6 @@ class UpdateLockitronTimeSlots
   def initialize(email)
     @email = email
     @booked_time_slots = TimeSlot.where(email: email).booked.today
-    p email
-    p @booked_time_slots
   end
 
   def run
@@ -25,9 +23,8 @@ class UpdateLockitronTimeSlots
     user = Lockitron::User.new(ENV.fetch('TOKEN'))
     lock = user.locks.first
 
-      lock.as(user) do |l|
-        l.update(start: @start, expiration: @end, email: @email)
-      end
+    lock.as(user) do |authorized_lock|
+       authorized_lock.update(start: @start, expiration: @end, email: @email)
     end
   end
 end

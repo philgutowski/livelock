@@ -48,7 +48,7 @@ class BookingsController < ApplicationController
     lock = user.locks.first
 
     lock.as(user) do |l|
-      invite_hash = l.invite(lockitron_params.symbolize_keys)
+      l.invite(lockitron_params.symbolize_keys)
     end
 
     update_lockitron_time_slots
