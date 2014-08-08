@@ -9,6 +9,14 @@ class TimeSlot < ActiveRecord::Base
     where(booking_id: nil)
   end
 
+  # def self.in_the_future
+  #   started_at > DateTime.now
+  # end
+  #
+  # def self.booked
+  #   ...
+  # end
+
   def day_of_week
     started_at.strftime("%A")
   end
