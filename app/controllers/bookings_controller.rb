@@ -48,7 +48,8 @@ class BookingsController < ApplicationController
     lock = user.locks.first
 
     lock.as(user) do |l|
-      l.invite(lockitron_params.symbolize_keys)
+      invite_hash = l.invite(lockitron_params.symbolize_keys)
+      User.create(lockitron_id: invite_hash["user"]["id"], email: lockitron_params[:email])
     end
   end
 end
