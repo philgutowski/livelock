@@ -1,4 +1,5 @@
 class TimeSlotCreator
+  TIME_ZONE_ADJUST = 4.hour
   def run
     create_next_month_of_time_slots
   end
@@ -45,7 +46,7 @@ class TimeSlotCreator
   def save_time_slots(day)
     [9, 12, 15, 18, 21].each do |hour|
       start_date = DateTime.new(year, start_month, day, hour)
-      TimeSlot.create(started_at: start_date)
+      TimeSlot.create(started_at: start_date.in_time_zone("Eastern Time (US & Canada)"))
     end
   end
 end

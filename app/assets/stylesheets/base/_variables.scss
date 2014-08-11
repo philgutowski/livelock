@@ -12,7 +12,7 @@ $header-line-height: $base-font-size * 1.25;
 $base-border-radius: em(3);
 
 // Colors
-$light-red: #F76262;
+$light-red: rgb(233, 93, 97);
 $green-blue: #032c32;
 $off-white: #fafafa;
 $blue: #477DCA;
@@ -28,7 +28,7 @@ $base-background-color: $off-white;
 
 // Font Colors
 $base-font-color: $green-blue;
-$base-accent-color: $light-red;
+$base-accent-color: $blue;
 
 // Link Colors
 $base-link-color: $base-accent-color;
