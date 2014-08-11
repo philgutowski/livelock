@@ -1,8 +1,8 @@
 class BookingsController < ApplicationController
   def new
     @booking = Booking.new
-    @time_slots = TimeSlot.order_and_return.page(params[:page])
-    @days = @time_slots.group_by(&:date)
+    @time_slots = TimeSlot.future.page(params[:page])
+    @time_slots_by_day = @time_slots.group_by(&:date)
   end
 
   def create
@@ -37,7 +37,7 @@ class BookingsController < ApplicationController
   end
 
   def week
-    today = DateTime.zone.today
+    today = Time.zone.today
     beginning_of_week = today.at_beginning_of_week
     end_of_week = today.at_end_of_week
     (beginning_of_week .. end_of_week)

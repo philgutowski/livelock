@@ -17,8 +17,17 @@ class TimeSlot < ActiveRecord::Base
     where(booking_id: nil)
   end
 
+  def self.future
+    order("started_at ASC").
+    where("started_at > ?", Time.zone.today.beginning_of_week - 1.day)
+  end
+
+  def booked?
+    booking_id
+  end
+
   def self.today
-    where("DATE(started_at) = ?", DateTime.zone.today)
+    where("DATE(started_at) = ?", Time.zone.today)
   end
 
   def date
@@ -31,14 +40,5 @@ class TimeSlot < ActiveRecord::Base
 
   def ended_at
     started_at + DURATION
-  end
-
-  def booked?
-    booking_id
-  end
-
-  def self.order_and_return
-    order("started_at ASC").
-      where("started_at > ?", Time.zone.today.beginning_of_week - 1.day)
   end
 end
