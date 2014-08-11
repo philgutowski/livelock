@@ -12,6 +12,7 @@ gem 'bourbon'
 gem 'neat'
 gem 'bitters'
 gem "lockitron", github: "chukdisc/lockitron"
+gem 'kaminari'
 
 group :development do
   gem 'pry-rails'

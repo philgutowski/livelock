@@ -1,6 +1,8 @@
 class TimeSlot < ActiveRecord::Base
   DURATION = 3.hours
 
+  paginates_per 35
+
   def self.most_recent
     order(:started_at).last
   end
