@@ -6,7 +6,7 @@
   @include outer-container;
   margin-top: 25px;
   .day-of-week {
-    @include span-columns(2);
+    @include span-columns(1.7);
   }
 
   input {
