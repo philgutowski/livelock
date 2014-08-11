@@ -32,6 +32,6 @@ class TimeSlot < ActiveRecord::Base
   end
 
   def booked?
-    booking_id != nil
+    booking_id
   end
 end

@@ -39,7 +39,7 @@ class BookingsController < ApplicationController
   end
 
   def week
-    today = Date.today
+    today = DateTime.zone.today
     beginning_of_week = today.at_beginning_of_week
     end_of_week = today.at_end_of_week
     (beginning_of_week .. end_of_week)
