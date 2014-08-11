@@ -9,7 +9,9 @@
     @include span-columns(1.7);
   }
 
-  input {
+  input[type=checkbox][disabled] + label {
+    color: $light-gray;
+    
   }
 }
 
