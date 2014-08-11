@@ -17,8 +17,8 @@ class TimeSlot < ActiveRecord::Base
     where("DATE(started_at) = ?", Date.today)
   end
 
-  def day_of_week
-    started_at.strftime("%A")
+  def date
+    started_at.strftime("%a, %b %e")
   end
 
   def label
@@ -27,5 +27,9 @@ class TimeSlot < ActiveRecord::Base
 
   def ended_at
     started_at + DURATION
+  end
+
+  def booked?
+    booking_id != nil
   end
 end

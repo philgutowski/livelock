@@ -3,11 +3,11 @@
 
   <%= form_for @booking do |form| %>
     <div class="time-slots-container">
-      <% @days.each do |weekday, time_slots| %>
+      <% @days.each do |day_of_week, time_slots| %>
         <div class="day-of-week">
-          <h4><%= weekday %></h4>
+          <h4><%= day_of_week %></h4>
           <ul>
-            <li><%= form.collection_check_boxes :time_slot_ids, time_slots, :id, :label %></li>
+            <li><%= form.collection_check_boxes :time_slot_ids, time_slots, :id, :label, disabled: lambda { |time_slot| time_slot.booked? }  %></li>
           </ul>
         </div>
       <% end %>
