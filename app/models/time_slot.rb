@@ -17,6 +17,10 @@ class TimeSlot < ActiveRecord::Base
     where(booking_id: nil)
   end
 
+  def booked?
+    booking_id
+  end
+
   def self.today
     where("DATE(started_at) = ?", DateTime.zone.today)
   end
@@ -31,10 +35,6 @@ class TimeSlot < ActiveRecord::Base
 
   def ended_at
     started_at + DURATION
-  end
-
-  def booked?
-    booking_id
   end
 
   def self.future

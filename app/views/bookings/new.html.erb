@@ -4,7 +4,7 @@
   <%= paginate @time_slots %>
   <%= form_for @booking do |form| %>
     <div class="time-slots-container">
-      <% @days.each do |day_of_week, time_slots| %>
+      <% @time_slots_by_day.each do |day_of_week, time_slots| %>
         <div class="day-of-week">
           <h4><%= day_of_week %></h4>
           <ul>
