@@ -1,7 +1,9 @@
 class TimeSlot < ActiveRecord::Base
   DURATION = 3.hours
+  DAYS_IN_WEEK = 7
+  NUMBER_OF_SLOTS_PER_DAY = 5
 
-  paginates_per 35
+  paginates_per DAYS_IN_WEEK * NUMBER_OF_SLOTS_PER_DAY
 
   def self.most_recent
     order(:started_at).last
@@ -16,7 +18,7 @@ class TimeSlot < ActiveRecord::Base
   end
 
   def self.today
-    where("DATE(started_at) = ?", Date.today)
+    where("DATE(started_at) = ?", DateTime.zone.today)
   end
 
   def date
@@ -32,6 +34,11 @@ class TimeSlot < ActiveRecord::Base
   end
 
   def booked?
-    booking_id != nil
+    booking_id
+  end
+
+  def self.order_and_return
+    order("started_at ASC").
+      where("started_at > ?", Time.zone.today.beginning_of_week - 1.day)
   end
 end
