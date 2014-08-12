@@ -44,7 +44,7 @@ class TimeSlotCreator
 
   def save_time_slots(day)
     [9, 12, 15, 18, 21].each do |hour|
-      start_date = DateTime.new(year, start_month, day, hour)
+      start_date = Time.zone.local(year, start_month, day, hour)
       TimeSlot.create(started_at: start_date)
     end
   end
