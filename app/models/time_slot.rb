@@ -21,13 +21,9 @@ class TimeSlot < ActiveRecord::Base
     order("started_at ASC").
       where("started_at > ?", Time.zone.now.beginning_of_week)
   end
-
-  def booked?
-    booking_id
-  end
-
-  def past?
-    started_at < Time.zone.now
+  
+  def unavailable?
+    booked? || past?
   end
 
   def self.today
@@ -47,8 +43,12 @@ class TimeSlot < ActiveRecord::Base
   end
 
   private
-  
-  def unavailable?
-    booked? || past?
+
+  def booked?
+    booking_id
+  end
+
+  def past?
+    started_at < Time.zone.now
   end
 end
