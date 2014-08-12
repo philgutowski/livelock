@@ -2,6 +2,7 @@ class TimeSlot < ActiveRecord::Base
   DURATION = 3.hours
   DAYS_IN_WEEK = 7
   NUMBER_OF_SLOTS_PER_DAY = 5
+  HOURS_TO_BEGINNING_OF_SUNDAY = 20.hours
 
   paginates_per DAYS_IN_WEEK * NUMBER_OF_SLOTS_PER_DAY
 
@@ -19,7 +20,7 @@ class TimeSlot < ActiveRecord::Base
 
   def self.future
     order("started_at ASC").
-      where("started_at > ?", Time.zone.today.beginning_of_week - 20.hours)
+      where("started_at > ?", Time.zone.today.beginning_of_week - HOURS_TO_BEGINNING_OF_SUNDAY)
   end
 
   def booked?
@@ -28,6 +29,10 @@ class TimeSlot < ActiveRecord::Base
 
   def past?
     started_at < Time.zone.now
+  end
+
+  def unavailable?
+    booked? || past?
   end
 
   def self.today
