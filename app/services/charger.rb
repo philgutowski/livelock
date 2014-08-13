@@ -1,14 +1,15 @@
 class Charger
-  def initialize(amount_in_cents, email)
-    @amount = amount
+  def initialize(amount_in_cents, email, stripe_token)
+    @amount = amount_in_cents
     @email = email
+    @stripe_token = stripe_token
   end
 
   def create
 
     customer = Stripe::Customer.create(
       email: @email,
-      card: params[:stripeToken]
+      card: @stripe_token
     )
 
     charge = Stripe::Charge.create(
@@ -18,8 +19,5 @@ class Charger
       currency:     'usd'
     )
 
-  rescue Stripe::CardError => e
-    flash[:error] = e.message
-    redirect_to charges_path
   end
 end

@@ -11,7 +11,12 @@ class BookingsController < ApplicationController
     time_slots = TimeSlot.where(id: booking_params[:time_slot_ids])
     time_slots.update_all(email: booking_params[:email])
 
-    Charger.new(cost_of_bookings, booking_params[:email])
+    charge_customer = Charger.new(cost_of_bookings, booking_params[:email], params[:stripeToken])
+    begin
+    charge_customer.create
+    rescue Stripe::CardError => e
+      flash[:error] = e.message
+    end
 
     if booking.save
       invite_lockitron_user
