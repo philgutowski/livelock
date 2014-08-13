@@ -10,8 +10,7 @@ function(){
     }
   });
 
-  //document.getElementById('customButton').addEventListener('click', function(e) {
-  $("#customButton").click(function(event){
+  $("#submit-button").click(function(event){
     // Open Checkout with further options
     handler.open({
       name: 'Demo Site',
