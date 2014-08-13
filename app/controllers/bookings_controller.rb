@@ -11,6 +11,8 @@ class BookingsController < ApplicationController
     time_slots = TimeSlot.where(id: booking_params[:time_slot_ids])
     time_slots.update_all(email: booking_params[:email])
 
+    Charger.new(cost_of_bookings, booking_params[:email])
+
     if booking.save
       invite_lockitron_user
     end
@@ -35,6 +37,12 @@ class BookingsController < ApplicationController
       :fullname,
     )
   end
+
+  def cost_of_bookings 
+    time_slots = booking_params[:time_slot_ids]
+    time_slots.count * 25 * 100
+  end
+
 
   def week
     today = Time.zone.today
