@@ -1,5 +1,15 @@
 $(function() {
 
+  var totalPrice = function() {
+    var prices = 0;
+    $("input:checked").each(function() {
+      prices += (
+        parseInt($(this).attr("data-price"), 10)
+      );
+    });
+    return prices;
+  };
+
   var handler = StripeCheckout.configure({
     key: window.stripe_key,
     // image: '/square-image.png',
@@ -9,18 +19,16 @@ $(function() {
     }
   });
 
+  $( "input[type=checkbox]" ).on( "click", function(){
+    $("#total-price").text(totalPrice() / 100);
+  });
+
   $("form#new_booking").submit(function(event){
     event.preventDefault();
-    $.ajax({
-      url: "/costs",
-      method: "POST"
-    })
-    .done(function(cost) {
       handler.open({
-        name: 'Demo Site',
-        description: 'Studio Session',
-        amount: cost
+        name: 'Shipyard Rehearsals',
+        description: 'Studio Sessions',
+        amount: totalPrice()
       })
-    })
   });
   });
