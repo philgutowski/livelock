@@ -1,4 +1,5 @@
 $(function() {
+
   var handler = StripeCheckout.configure({
     key: window.stripe_key,
     // image: '/square-image.png',

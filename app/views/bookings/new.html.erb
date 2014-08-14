@@ -8,7 +8,10 @@
         <div class="day-of-week">
           <h4><%= day_of_week %></h4>
           <ul>
-            <li><%= form.collection_check_boxes :time_slot_ids, time_slots, :id, :label, disabled: lambda { |time_slot| time_slot.unavailable? }  %></li>
+          <li><%= form.collection_check_boxes :time_slot_ids, time_slots, :id, :label, disabled: lambda { |time_slot| time_slot.unavailable? } do |b| %>
+              <%= b.check_box(:"data-price" => b.object.price) %>
+              <%= b.label %>
+            <% end %></li>
           </ul>
         </div>
       <% end %>
