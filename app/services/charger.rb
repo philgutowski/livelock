@@ -1,12 +1,11 @@
 class Charger
-  def initialize(amount_in_cents, email, stripe_token)
-    @amount = amount_in_cents
+  def initialize(time_slots, email, stripe_token)
+    @time_slots = time_slots
     @email = email
     @stripe_token = stripe_token
   end
 
   def create
-
     customer = Stripe::Customer.create(
       email: @email,
       card: @stripe_token
@@ -14,10 +13,17 @@ class Charger
 
     charge = Stripe::Charge.create(
       customer:     customer.id,
-      amount:       @amount,
+      amount:       cost_of_bookings,
       description:  'Rails Stripe customer',
       currency:     'usd'
     )
 
+  end
+
+  private
+
+  def cost_of_bookings
+    number_of_time_slots = @time_slots.count
+    number_of_time_slots * 25 *100
   end
 end
