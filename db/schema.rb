@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20140814194841) do
     t.datetime "started_at", null: false
     t.integer  "booking_id"
     t.string   "email"
-    t.integer  "price",      null: false
+    t.integer  "price"
   end
 
   add_index "time_slots", ["booking_id"], name: "index_time_slots_on_booking_id", using: :btree
