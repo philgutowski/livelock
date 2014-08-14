@@ -1,6 +1,6 @@
 class CostsController < ApplicationController
   def create
-    @cost = 4500
+    @cost = 
     render json: @cost
   end
 end

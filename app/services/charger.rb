@@ -14,7 +14,7 @@ class Charger
     charge = Stripe::Charge.create(
       customer:     customer.id,
       amount:       cost_of_bookings,
-      description:  'Rails Stripe customer',
+      description:  'Studio Customer',
       currency:     'usd'
     )
 
