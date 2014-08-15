@@ -24,7 +24,7 @@ class UpdateLockitronTimeSlots
     lock = user.locks.first
 
     lock.as(user) do |authorized_lock|
-       authorized_lock.update(start: @start, expiration: @end, email: @email)
+      authorized_lock.update(start: @start, expiration: @end, email: @email)
     end
   end
 end

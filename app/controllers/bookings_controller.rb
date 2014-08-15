@@ -22,7 +22,7 @@ class BookingsController < ApplicationController
     if booking.save
       invite_lockitron_user
     end
-    redirect_to root_path
+    redirect_to booking
   end
 
   private

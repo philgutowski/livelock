@@ -16,6 +16,13 @@ $(function() {
     token: function(token) {
       // Use the token to create the charge with a server-side script.
       // You can access the token ID with `token.id`
+      console.log("here 1");
+      $("#token").val(token);
+      console.log("here 2");
+      $("form#new_booking").unbind("submit");
+      console.log("here 3");
+      $("form#new_booking").submit();
+      console.log("here 4");
     }
   });
 
@@ -25,10 +32,10 @@ $(function() {
 
   $("form#new_booking").submit(function(event){
     event.preventDefault();
-      handler.open({
-        name: 'Shipyard Rehearsals',
-        description: 'Studio Sessions',
-        amount: totalPrice()
-      })
+    handler.open({
+      name: 'Shipyard Rehearsals',
+      description: 'Studio Sessions',
+      amount: totalPrice()
+    })
   });
-  });
+});

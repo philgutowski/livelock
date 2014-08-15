@@ -13,7 +13,7 @@ class Charger
 
     charge = Stripe::Charge.create(
       customer:     customer.id,
-      amount:       cost_of_bookings,
+      amount:       '1000',
       description:  'Studio Customer',
       currency:     'usd'
     )
