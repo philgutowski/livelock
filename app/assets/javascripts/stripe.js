@@ -20,8 +20,8 @@ $(function() {
   });
 
   $("input[type=checkbox]").on("click", function(){
-  $("#total-price").text(totalPrice() / 100);
-});
+    $("#total-price").text(totalPrice() / 100);
+  });
 
   $form.submit(function(event){
     event.preventDefault();
