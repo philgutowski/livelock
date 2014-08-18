@@ -6,6 +6,19 @@ class TimeSlotCreator
     create_next_month_of_time_slots
   end
 
+  def primetime?(start_date)
+    hour = start_date.hour
+    hour > 15 || start_date.saturday? || start_date.sunday?
+  end
+
+  def price_for(start_date)
+    if primetime?(start_date)
+      PRIMETIME_PRICE
+    else
+      REGULAR_PRICE
+    end
+  end
+
   private
 
   def most_recent_slot
@@ -50,19 +63,6 @@ class TimeSlotCreator
       start_date = Time.zone.local(year, start_month, day, hour)
       price = price_for(start_date)
       TimeSlot.create(started_at: start_date, price: price)
-    end
-  end
-
-  def primetime?(start_date)
-    hour = start_date.hour
-    hour > 15 || start_date.saturday? || start_date.sunday?
-  end
-
-  def price_for(start_date)
-    if primetime?(start_date)
-      PRIMETIME_PRICE
-    else
-      REGULAR_PRICE
     end
   end
 end

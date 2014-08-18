@@ -11,7 +11,8 @@ class BookingsController < ApplicationController
     time_slots = TimeSlot.where(id: booking_params[:time_slot_ids])
     time_slots.update_all(email: booking_params[:email])
 
-    charger = Charger.new(time_slots, booking_params[:email], params[:stripeToken])
+    charger = Charger.new(time_slots, booking_params[:email], params[:token])
+
 
     begin
       charger.create

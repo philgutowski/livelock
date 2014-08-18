@@ -12,8 +12,8 @@ $(function() {
 
   var handler = StripeCheckout.configure({
     key: window.stripe_key,
-      token: function(token) {
-        $("#token").val(token);
+      token: function(response) {
+        $("#token").val(response.id);
         $form.unbind("submit");
         $form.submit();
       }
