@@ -9,12 +9,10 @@
     <script>
       window.stripe_key = "<%= Rails.configuration.stripe[:publishable_key] %>";
     </script>
-
   </head>
   <body>
   <section class="header">
-    <h1>LiveLock</h1>
-    <h3><em>Automated Access Control for Music Studios</em></h3>
+    <div class="main-logo"></div>
   </section>
 
   <%= yield %>
