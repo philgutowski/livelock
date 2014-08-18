@@ -8,7 +8,7 @@ $(function() {
     return prices;
   };
 
-  var $form = $("form#new_booking")
+  var $form = $("form#new_booking");
 
   var handler = StripeCheckout.configure({
     key: window.stripe_key,
