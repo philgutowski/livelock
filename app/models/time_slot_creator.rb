@@ -53,9 +53,13 @@ class TimeSlotCreator
     end
   end
 
-  def price_for(start_date)
+  def primetime?(start_date)
     hour = start_date.hour
-    if hour > 15 || start_date.saturday? || start_date.sunday?
+    hour > 15 || start_date.saturday? || start_date.sunday?
+  end
+
+  def price_for(start_date)
+    if primetime?(start_date)
       PRIMETIME_PRICE
     else
       REGULAR_PRICE

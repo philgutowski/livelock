@@ -19,16 +19,16 @@ $(function() {
       }
   });
 
-$("input[type=checkbox]").on( "click", function(){
+  $("input[type=checkbox]").on("click", function(){
   $("#total-price").text(totalPrice() / 100);
 });
 
-$form.submit(function(event){
-  event.preventDefault();
-  handler.open({
-    name: 'Shipyard Rehearsals',
-    description: 'Studio Sessions',
-    amount: totalPrice()
+  $form.submit(function(event){
+    event.preventDefault();
+    handler.open({
+      name: 'Shipyard Rehearsals',
+      description: 'Studio Sessions',
+      amount: totalPrice()
+    });
   });
-});
 });

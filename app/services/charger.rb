@@ -6,7 +6,7 @@ class Charger
   end
 
   def create
-    Stripe::Customer.create(
+   customer =  Stripe::Customer.create(
       email: @email,
       card: @stripe_token
     )
