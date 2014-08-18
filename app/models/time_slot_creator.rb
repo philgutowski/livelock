@@ -1,4 +1,7 @@
 class TimeSlotCreator
+  PRIMETIME_PRICE = 6000
+  REGULAR_PRICE = 4000
+
   def run
     create_next_month_of_time_slots
   end
@@ -11,7 +14,7 @@ class TimeSlotCreator
 
   def create_time_slot
     if !TimeSlot.exists?
-      TimeSlot.create(started_at: 1.month.ago, price: 6000)
+      TimeSlot.create(started_at: 1.month.ago, price: price_for(1.month.ago))
     end
   end
 
@@ -45,17 +48,17 @@ class TimeSlotCreator
   def save_time_slots(day)
     [9, 12, 15, 18, 21].each do |hour|
       start_date = Time.zone.local(year, start_month, day, hour)
-      price = price_maker(start_date)
+      price = price_for(start_date)
       TimeSlot.create(started_at: start_date, price: price)
     end
   end
 
-  def price_maker(start_date)
+  def price_for(start_date)
     hour = start_date.hour
     if hour > 15 || start_date.saturday? || start_date.sunday?
-      6000
+      PRIMETIME_PRICE
     else
-      4000
+      REGULAR_PRICE
     end
   end
 end

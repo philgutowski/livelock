@@ -15,8 +15,8 @@ class BookingsController < ApplicationController
 
     begin
       charger.create
-    rescue Stripe::CardError => e
-      flash[:error] = e.message
+    rescue Stripe::CardError => error
+      flash[:error] = error.message
     end
 
     if booking.save

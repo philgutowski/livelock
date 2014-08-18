@@ -8,16 +8,18 @@
         <div class="day-of-week">
           <h4><%= day_of_week %></h4>
           <ul>
-          <li><%= form.collection_check_boxes :time_slot_ids, time_slots, :id, :label, disabled: lambda { |time_slot| time_slot.unavailable? } do |b| %>
-              <%= b.check_box(:"data-price" => b.object.price) %>
-              <%= b.label %>
-            <% end %></li>
+            <li>
+            <%= form.collection_check_boxes :time_slot_ids, time_slots, :id, :label, disabled: lambda { |time_slot| time_slot.unavailable? } do |check_box| %>
+              <%= check_box.check_box("data-price" => check_box.object.price) %>
+              <%= check_box.label %>
+            <% end %>
+            </li>
           </ul>
         </div>
       <% end %>
     </div>
 
-    <div class="running-total"><h4>Total Cost: $<span id="total-price"></h4></span></div>
+    <div class="running-total"><h4>Total Cost: $<span id="total-price">0</span></h4></div>
 
     <div class="user-info">
       <div class="form-column">
@@ -36,6 +38,6 @@
         <%= form.text_area :special_requirements %>
       </div>
     </div>
-    <%= form.submit "Submit", class: "stripe-button-el" %>
+    <%= form.submit "Submit" %>
   <% end %>
 </section>

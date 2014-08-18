@@ -13,7 +13,7 @@ gem 'neat'
 gem 'bitters'
 gem "lockitron", github: "chukdisc/lockitron"
 gem 'kaminari'
-gem 'stripe', git: 'https://github.com/stripe/stripe-ruby'
+gem 'stripe', '~> 1.15.0'
 
 group :development do
   gem 'pry-rails'
