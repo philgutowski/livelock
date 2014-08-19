@@ -7,12 +7,12 @@ class BookingsController < ApplicationController
 
   def create
     booking = Booking.new(booking_params)
+    email = booking_params[:email]
 
     time_slots = TimeSlot.where(id: booking_params[:time_slot_ids])
-    time_slots.update_all(email: booking_params[:email])
+    time_slots.update_all(email: email)
 
-    charger = Charger.new(time_slots, booking_params[:email], params[:token])
-
+    charger = Charger.new(time_slots, email, params[:token])
 
     begin
       charger.create
@@ -22,6 +22,7 @@ class BookingsController < ApplicationController
 
     if booking.save
       invite_lockitron_user
+      ConfirmationMailer.confirmation_email(email).deliver
     end
     redirect_to booking
   end
