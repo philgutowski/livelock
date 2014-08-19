@@ -25,10 +25,16 @@ $(function() {
 
   $form.submit(function(event){
     event.preventDefault();
-    handler.open({
-      name: 'Shipyard Rehearsals',
-      description: 'Studio Sessions',
-      amount: totalPrice()
-    });
+    if ( $( ".required" ).val().length === 0 ) {
+      console.log("There are empty fields in the form");
+      $(".form-error").text("This field is required");
+      return false;
+    } else {
+      handler.open({
+        name: 'Shipyard Rehearsals',
+        description: 'Studio Sessions',
+        amount: totalPrice()
+      });
+    }
   });
 });

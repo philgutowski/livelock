@@ -24,13 +24,16 @@
     <div class="user-info">
       <div class="form-column">
         <%= form.label :fullname, "Full Name" %>
-        <%= form.text_field :fullname %>
+        <%= form.text_field :fullname, class: "required" %>
+        <span class="form-error"></span>
       </div>
       <div class="form-column">
         <%= form.label :email, "Email" %>
-        <%= form.email_field :email %>
+        <%= form.email_field :email, class: "required" %>
+        <span class="form-error"></span>
         <%= form.label :phone, "Phone" %>
-        <%= form.telephone_field :phone %>
+        <%= form.telephone_field :phone, class: "required" %>
+        <span class="form-error"></span>
         <%= hidden_field_tag 'token', id: "token" %>
       </div>
       <div class="form-column-full-span">
