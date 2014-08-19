@@ -25,16 +25,22 @@ $(function() {
 
   $form.submit(function(event){
     event.preventDefault();
-    if ( $( ".required" ).val().length === 0 ) {
-      console.log("There are empty fields in the form");
-      $(".form-error").text("This field is required");
-      return false;
+
+    var countChecked = $("input:checked").length;
+
+    if (countChecked < 1 ) {
+      $(".time-slot-error").text("You must select at least one time slot");
     } else {
-      handler.open({
-        name: 'Shipyard Rehearsals',
-        description: 'Studio Sessions',
-        amount: totalPrice()
-      });
+      if ( $( ".required" ).val().length === 0 ) {
+        $(".form-error").text("This field is required");
+        return false;
+      } else {
+        handler.open({
+          name: 'Shipyard Rehearsals',
+          description: 'Studio Sessions',
+          amount: totalPrice()
+        });
+      }
     }
   });
 });
