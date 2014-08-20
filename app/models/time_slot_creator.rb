@@ -6,6 +6,14 @@ class TimeSlotCreator
     create_next_month_of_time_slots
   end
 
+  def run_monthly
+    if first_day_of_month?
+      create_next_month_of_time_slots
+    else
+      puts "No time slots created becasue it's not the first day of the month"
+    end
+  end
+
   def primetime?(start_date)
     hour = start_date.hour
     hour > 15 || start_date.saturday? || start_date.sunday?
@@ -48,6 +56,10 @@ class TimeSlotCreator
         most_recent_year
       end
     end
+  end
+
+  def first_day_of_month?
+    Date.today.day == 1
   end
 
   def create_next_month_of_time_slots
