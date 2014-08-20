@@ -177,7 +177,6 @@ DEPENDENCIES
   jquery-rails
   kaminari
   lockitron!
-  mail
   neat
   pg
   pry-rails
