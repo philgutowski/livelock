@@ -15,6 +15,7 @@ gem 'lockitron', github: 'chukdisc/lockitron'
 gem 'kaminari'
 gem 'stripe', '~> 1.15.0'
 gem 'rails_12factor', group: :production
+gem 'mail'
 
 group :development do
   gem 'pry-rails'
