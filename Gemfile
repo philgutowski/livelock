@@ -14,6 +14,7 @@ gem 'bitters'
 gem 'lockitron', github: 'chukdisc/lockitron'
 gem 'kaminari'
 gem 'stripe', '~> 1.15.0'
+gem 'rails_12factor', group: :production
 
 group :development do
   gem 'pry-rails'
