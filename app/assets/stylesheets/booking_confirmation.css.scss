@@ -1,7 +1,47 @@
 .confirmation-page-container {
   @include outer-container();
+  margin-top: 140px;
   .thank-you {
-    margin-top: 130px;
+    @include outer-container();
+    .title-text {
+      @include shift(1);
+      @include span-columns(10);
+      text-align: center;
+      h4 {
+        margin-top: 20px;
+      }
+    }
+    ul {
+      li {
+        @include span-columns(8);
+        @include shift(2);
+        @include omega(2n);
+        margin-top: 30px;
+        background-color: $light-red;
+        text-align: center;
+        border-radius: 15px;
+        padding-top: 10px;
+        font-size: $base-font-size * 1.25;
+      }
+    }
   }
+  .instructions {
+    text-align: center;
+    margin-top: 30px;
+    li {
+      h2 {
+        margin-bottom: 15px;
+      }
+      @include span-columns(8);
+      @include shift(2);
+      margin-top: 30px;
+      background-color: $light-red;
+      text-align: center;
+      border-radius: 15px;
+      padding: 30px;
+      font-size: $base-font-size * 1.25;
+    }
+  }
+
 }
 

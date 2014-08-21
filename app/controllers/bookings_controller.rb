@@ -28,8 +28,7 @@ class BookingsController < ApplicationController
   end
 
   def show
-    time_slots = TimeSlot.all.where(booking_id: params[:id])
-    @time_slots = "#{time_slots.date} from #{time_slots.label}"
+    @time_slots = TimeSlot.all.where(booking_id: params[:id]).order(started_at: :asc)
   end
 
   private
