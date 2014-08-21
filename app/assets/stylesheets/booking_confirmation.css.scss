@@ -1,0 +1,7 @@
+.confirmation-page-container {
+  @include outer-container();
+  .thank-you {
+    margin-top: 130px;
+  }
+}
+

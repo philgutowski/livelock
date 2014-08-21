@@ -9,10 +9,10 @@ class BookingsController < ApplicationController
     booking = Booking.new(booking_params)
     email = booking_params[:email]
 
-    time_slots = TimeSlot.where(id: booking_params[:time_slot_ids])
-    time_slots.update_all(email: email)
+    @time_slots = TimeSlot.where(id: booking_params[:time_slot_ids])
+    @time_slots.update_all(email: email)
 
-    charger = Charger.new(time_slots, email, params[:token])
+    charger = Charger.new(@time_slots, email, params[:token])
 
     begin
       charger.create
@@ -27,6 +27,11 @@ class BookingsController < ApplicationController
     redirect_to booking
   end
 
+  def show
+    time_slots = TimeSlot.all.where(booking_id: params[:id])
+    @time_slots = "#{time_slots.date} from #{time_slots.label}"
+  end
+
   private
 
   def booking_params
@@ -34,7 +39,6 @@ class BookingsController < ApplicationController
       :fullname,
       :email,
       :phone,
-      :special_requirements,
       time_slot_ids: [],
     )
   end

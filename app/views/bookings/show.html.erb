@@ -1,1 +1,36 @@
-<h1>SUCCESS!</h1>
+<section class="confirmation-page-container">
+  <div class="thank-you">
+    <h1>Thanks for your studio reservation.</h1>
+    <h3>There are just a few more things you need to do.</h3>
+    <% @time_slots.each do |time_slot| %>
+      <%= time_slot %>
+    <% end %>
+  </div>
+  <ol>
+    <li>
+      <p>Check your email.  You've been invited to make a new account as a 
+      <a href="http://lockitron.com" target=_blank>Lockitron</a> user.  Please 
+      follow the link in that email to setup your account.
+    </li>
+    <li>
+      <p>When the time comes for your first booking, vist the studio.  It's located 
+      at <a href="https://goo.gl/maps/pWg0w" target=_blank>100 Condor Street</a> on 
+      the top floor in East Boston, MA.</p>
+      <p>If you've never been here before, it's a good idea to watch this video so 
+      you don't get lost coming in.</p>
+      <div class=video>
+          <iframe width="560" height="315" src="//www.youtube.com/embed/LZhPQ3hWP9o" 
+            frameborder="0" allowfullscreen></iframe>
+      </div>
+    <li>
+      <p>When you arrive at the studio door during your reserved time, you'll be able
+      to operate our wi-fi door lock, called Lockitron.  Just visit the link in your 
+      confirmation email to open the door.  It's the one that looks like this 
+      <a href="https://m.lockitron.com/" target=_blank>http://m.lockitron.com</a></p>
+    </li>
+    <li>
+      <p>Enjoy your jam, and please help keep our collaborative space clean by 
+      picking up on your way out.</p>
+    </li>
+  </ol>
+</section>
