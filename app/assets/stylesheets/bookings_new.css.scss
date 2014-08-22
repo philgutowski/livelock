@@ -2,16 +2,38 @@
   @include outer-container;
   padding-top: 140px;
   .form-title {
-    @include span-columns(12);
+    @include span-columns(10);
+    @include shift(1);
+    border-radius: 15px;
     background-color: $light-red;
+    padding: 25px;
+    text-align: center;
+  }
+}
+
+.pagination {
+  @include outer-container();
+  margin-top: 50px;
+  font-size: 2em;
+  .page, .last, .first {
+    display: none;
+  }
+  .next {
+    @include span-columns(6);
+    text-align: right;
+  }
+  .prev {
+    @include span-columns(5.7);
+    text-align: left;
   }
 }
 
 .time-slots-container {
   @include outer-container;
-  margin-top: 25px;
+  margin: 25px 20px 0 20px;
   .day-of-week {
     @include span-columns(1.7);
+    font-size: $base-font-size * .9;
   }
 
   input[type=checkbox][disabled] + label {
@@ -19,18 +41,19 @@
   }
 }
 
+
+.running-total {
+  @include span-columns(6);
+  margin: 25px;
+}
+
 .user-info {
   @include outer-container;
+  margin: 25px 20px 0 20px;
 
   .form-column {
-    @include span-columns(6);
+    @include span-columns(4);
     margin: 0;
     padding: 10px 10px;
-  }
-
-  .form-column-full-span {
-    @include span-columns(12);
-    margin: 0;
-    padding: 0 10px;
   }
 }
