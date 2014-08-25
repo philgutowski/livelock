@@ -13,13 +13,15 @@
     position: relative;
     #next {
       @include span-columns(1);
-      @include shift(10);
+      @include shift(9.25);
     }
     #prev {
       @include span-columns(1);
+      @include shift(.25);
     }
     .disabled {
       @include span-columns(1);
+      @include shift(.25);
       opacity: .5;
     }
   }

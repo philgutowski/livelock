@@ -10,8 +10,11 @@
           <ul>
             <li>
             <%= form.collection_check_boxes :time_slot_ids, time_slots, :id, :label, disabled: lambda { |time_slot| time_slot.unavailable? } do |check_box| %>
-              <%= check_box.check_box("data-price" => check_box.object.price) %>
-              <%= check_box.label %>
+              <label class="label-switch">
+                <%= check_box.check_box("data-price" => check_box.object.price) %>
+                <div class="checkbox"></div>
+                <%= check_box.label %>
+              </label>
             <% end %>
             </li>
           </ul>
