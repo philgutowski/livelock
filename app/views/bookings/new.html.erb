@@ -1,5 +1,5 @@
 <section class="booking-form-container">
-  <h2 class="form-title">Reserve a session</h2>
+  <h2 class="title-bar">Pick your sessions</h2>
 
   <%= paginate @time_slots %>
   <%= form_for @booking do |form| %>
@@ -20,7 +20,9 @@
     </div>
     <span class="time-slot-error"></span>
 
-    <div class="running-total"><h4>Total Cost: $<span id="total-price">0</span></h4></div>
+    <div class="title-bar">
+      <h2>Enter your information</h2>
+    </div>
 
     <div class="user-info">
       <div class="form-column">
@@ -32,13 +34,15 @@
         <%= form.label :email, "Email" %>
         <%= form.email_field :email, class: "required" %>
         <span class="form-error"></span>
+      </div>
+      <div class="form-column">
         <%= form.label :phone, "Phone" %>
         <%= form.telephone_field :phone, class: "required" %>
         <span class="form-error"></span>
         <%= hidden_field_tag 'token', id: "token" %>
       </div>
     </div>
-    <%= form.submit "Submit" %>
+    <div class="running-total"><h4>Total Cost: $<span id="total-price">0</span></h4></div>
+    <%= form.submit "BOOK IT" %>
   <% end %>
-  <span class="icon-arrow-right"></span>
 </section>
