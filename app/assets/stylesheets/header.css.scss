@@ -3,14 +3,14 @@
   position: fixed;
   top: 0;
   background-color: white;
-  height: 120px;
+  height: 90px;
   box-shadow: 10px 5px 5px gray;
 
   .main-logo {
     @include span_columns(6);
     margin-left: 20px;
     margin-top: 10px;
-    height: 90px;
+    height: 70px;
     background-image: image_url("shipyard_logo.png");
     background-size: contain;
     background-repeat: no-repeat;

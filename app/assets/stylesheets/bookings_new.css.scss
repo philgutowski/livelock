@@ -1,35 +1,12 @@
 .booking-form-container {
   @include outer-container;
-  padding-top: 140px;
-<<<<<<< HEAD
-  .form-title {
-    @include span-columns(10);
-    @include shift(1);
-    border-radius: 15px;
-=======
+  padding-top: 120px;
   .title-bar {
     @include span-columns(12);
->>>>>>> Position user information text fields
-    background-color: $light-red;
-    padding: 25px;
-    text-align: center;
-  }
-}
-
-.pagination {
-  @include outer-container();
-  margin-top: 50px;
-  font-size: 2em;
-  .page, .last, .first {
-    display: none;
-  }
-  .next {
-    @include span-columns(6);
-    text-align: right;
-  }
-  .prev {
-    @include span-columns(5.7);
-    text-align: left;
+    background-color: #FF3333;
+    color: white;
+    padding: 5px;
+    margin-bottom: 15px;
   }
   .pagination {
     bottom: -150px;
@@ -42,7 +19,8 @@
       @include span-columns(1);
     }
     .disabled {
-      display:none;
+      @include span-columns(1);
+      opacity: .5;
     }
   }
 }
@@ -53,6 +31,7 @@
   .day-of-week {
     @include span-columns(1.5);
     margin-top: -60px;
+    margin-bottom: 20px;
   }
 
   input[type=checkbox][disabled] + label {
@@ -72,7 +51,8 @@
 
   .form-column {
     @include span-columns(4);
-    margin: 0;
+    text-align: center;
+
     label {
       @include span-columns(1 of 4);
       @include omega();

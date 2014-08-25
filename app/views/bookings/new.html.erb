@@ -1,12 +1,12 @@
 <section class="booking-form-container">
-  <h2 class="title-bar">Pick your sessions</h2>
+  <h2 class="title-bar">Select date and time</h2>
 
   <%= paginate @time_slots %>
   <%= form_for @booking do |form| %>
     <div class="time-slots-container">
       <% @time_slots_by_day.each do |day_of_week, time_slots| %>
         <div class="day-of-week">
-          <h4><%= day_of_week %></h4>
+          <p><%= day_of_week %></p>
           <ul>
             <li>
             <%= form.collection_check_boxes :time_slot_ids, time_slots, :id, :label, disabled: lambda { |time_slot| time_slot.unavailable? } do |check_box| %>
