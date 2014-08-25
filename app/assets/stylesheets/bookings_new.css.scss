@@ -26,14 +26,27 @@
     @include span-columns(5.7);
     text-align: left;
   }
+  .pagination {
+    bottom: -200px;
+    position: relative;
+    #next {
+      @include span-columns(1);
+      @include shift(10);
+    }
+    #prev {
+      @include span-columns(1);
+    }
+    .disabled {
+      display:none;
+    }
+  }
 }
 
 .time-slots-container {
   @include outer-container;
-  margin: 25px 20px 0 20px;
+  @include shift(1.3);
   .day-of-week {
-    @include span-columns(1.7);
-    font-size: $base-font-size * .9;
+    @include span-columns(1.5);
   }
 
   input[type=checkbox][disabled] + label {
