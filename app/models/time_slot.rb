@@ -35,7 +35,7 @@ class TimeSlot < ActiveRecord::Base
   end
 
   def label
-    "#{started_at.strftime("%l%P")} to #{ended_at.strftime("%l%P")}"
+    "#{started_at.strftime("%l")}:00 - #{ended_at.strftime("%l")}:00"
   end
 
   def ended_at

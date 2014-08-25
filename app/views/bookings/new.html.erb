@@ -13,8 +13,8 @@
               <label class="label-switch">
                 <%= check_box.check_box("data-price" => check_box.object.price) %>
                 <div class="checkbox"></div>
-                <%= check_box.label %>
               </label>
+              <%= check_box.label class: "timeslot-label" %>
             <% end %>
             </li>
           </ul>
@@ -46,6 +46,6 @@
       </div>
     </div>
     <div class="running-total"><h4>Total Cost: $<span id="total-price">0</span></h4></div>
-    <%= form.submit "BOOK IT" %>
+    <%= form.submit "BOOK IT", class: "submit-button" %>
   <% end %>
 </section>

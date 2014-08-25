@@ -1,11 +1,12 @@
 .label-switch {
-  $switch-width: 52px;
+  $switch-width: 38px;
   $switch-padding: 2px;
-  $switch-height: 32px;
+  $switch-height: 21px;
   $switch-radius: $switch-height;
   $knob-height: $switch-height - ($switch-padding * 2);
   $knob-width: $knob-height;
   $knob-radius: $switch-height - ($switch-padding * 2);
+  margin-left: 5px;
 
   align-self: center;
   border-radius: $switch-radius;
@@ -16,6 +17,14 @@
   vertical-align: middle;
   width: $switch-width;
   @include box-sizing(border-box);
+
+  input[type="checkbox"][disabled] {
+    display: none;
+
+    + .checkbox {
+      opacity: .5;
+    }
+  }
 
   input[type="checkbox"] {
     display: none;
@@ -62,7 +71,7 @@
 
   &:checked {
     + .checkbox {
-      background: $blue;
+      background: $green;
         
         &:before {
           @include transform(scale(0));

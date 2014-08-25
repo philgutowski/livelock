@@ -12,14 +12,15 @@ $header-line-height: $base-font-size * 1.25;
 $base-border-radius: em(3);
 
 // Colors
-$light-red: #333;
+$red: #EF3E34;
+$green: #00333C;
 $green-blue: #032c32;
 $off-white: #fafafa;
 $blue: #477DCA;
 $dark-gray: #333;
 $medium-gray: #999;
 $light-gray: #DDD;
-$light-red: #FBE3E4;
+$light-red: #F58F8A;
 $light-yellow: #FFF6BF;
 $light-green: #E6EFC2;
 
@@ -27,13 +28,13 @@ $light-green: #E6EFC2;
 $base-background-color: $off-white;
 
 // Font Colors
-$base-font-color: $green-blue;
-$base-accent-color: $blue;
+$base-font-color: $green;
+$base-accent-color: $red;
 
 // Link Colors
 $base-link-color: $base-accent-color;
 $hover-link-color: darken($base-accent-color, 15);
-$base-button-color: $base-link-color;
+$base-button-color: $green;
 $hover-button-color: $hover-link-color;
 
 // Border color
