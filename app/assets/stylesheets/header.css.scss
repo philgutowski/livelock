@@ -15,4 +15,18 @@
     background-size: contain;
     background-repeat: no-repeat;
   }
+
+  .social-container {
+    @include outer-container;
+    margin-top: 10px;
+    margin-right: 10px;
+
+    .social {
+      text-align: right;
+      font-size: 2.5em;
+      span {
+        margin: 10px 15px;
+      }
+    }
+  }
 }
