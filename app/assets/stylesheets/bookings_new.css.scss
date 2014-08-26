@@ -1,33 +1,51 @@
 $smaller-screen: new-breakpoint(max-width 1260px 12);
+$mobile: new-breakpoint(max-width 500px 12);
 
 .booking-form-container {
   @include outer-container;
+  @include media($smaller-screen) {
+    padding-top: 20px;
+  }
   padding-top: 120px;
   .title-bar {
     @include span-columns(12);
     background-color: $red;
     color: white;
     padding: 5px 25px;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
   }
   .pagination {
     @include media($smaller-screen) {
       bottom: -800px;
+    }
+    @include media($mobile) {
+      bottom: -1590px;
     }
     bottom: -130px;
     position: relative;
     #next {
       @include span-columns(.7);
       @include shift(10.5);
+      @include media($mobile) {
+        @include span-columns(2);
+        @include shift(7);
+      }
     }
     #prev {
       @include span-columns(.7);
       @include shift(.05);
+      @include media($mobile) {
+        @include span-columns(2);
+        @include shift(.5);
+      }
     }
     .disabled {
       @include span-columns(.7);
       @include shift(.05);
       opacity: .5;
+      @include media($mobile) {
+        @include span-columns(2);
+      }
     }
   }
 }
@@ -37,19 +55,25 @@ $smaller-screen: new-breakpoint(max-width 1260px 12);
   @include shift(.8);
   .day-of-week {
     @include span-columns(1.6);
+
     @include media($smaller-screen) {
       @include shift(.75);
       @include span-columns(4.5);
       margin-bottom: 90px;
       font-size: 1.2em;
     }
+
+    @include media($mobile) {
+      @include span-columns(10);
+    }
+
     font-weight: bold;
     margin-top: -60px;
     margin-bottom: 20px;
     background-color: darken($base-background-color, 3);
     border-radius: 15px;
     padding: 0 10px;
-   
+
     p {
       margin: 20px 0 25px 5px;
       @include media($smaller-screen) {
@@ -78,6 +102,9 @@ $smaller-screen: new-breakpoint(max-width 1260px 12);
 
   .form-column {
     @include span-columns(4);
+    @include media($mobile) {
+      @include span-columns(12);
+    }
   }
 }
 
@@ -85,9 +112,17 @@ $smaller-screen: new-breakpoint(max-width 1260px 12);
   @include span-columns(4);
   margin-top: 10px;
   padding-left: 10px;
+  @include media($mobile) {
+    @include span-columns(12);
+    padding-bottom: 10px;
+    text-align: center;
+  }
 }
 
 .submit-button {
   @include span-columns(3.9);
   margin-right: 10px;
+  @include media($mobile) {
+    @include span-columns(12);
+  }
 }
