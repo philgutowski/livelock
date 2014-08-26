@@ -1,4 +1,7 @@
 .header {
+  @include media($smaller-screen) {
+    position: static;
+  }
   width: 100%;
   position: fixed;
   top: 0;
@@ -18,14 +21,20 @@
 
   .social-container {
     @include outer-container;
-    margin-top: 10px;
+    padding-top: 10px;
     margin-right: 10px;
 
     .social {
+      @include media($smaller-screen) {
+        font-size: 1.5em;
+      }
       text-align: right;
       font-size: 2.5em;
       span {
         margin: 10px 15px;
+        @include media($smaller-screen) {
+          margin: 0 3px;
+        }
       }
     }
   }
