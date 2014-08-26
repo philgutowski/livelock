@@ -35,6 +35,9 @@
     font-weight: bold;
     margin-top: -60px;
     margin-bottom: 20px;
+    background-color: darken($base-background-color, 3);
+    border-radius: 15px;
+    padding: 0 10px;
    
     p {
       margin: 20px 0 25px 5px;
