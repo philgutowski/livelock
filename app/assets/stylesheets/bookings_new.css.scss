@@ -1,3 +1,5 @@
+$smaller-screen: new-breakpoint(max-width 1260px 12);
+
 .booking-form-container {
   @include outer-container;
   padding-top: 120px;
@@ -9,6 +11,9 @@
     margin-bottom: 30px;
   }
   .pagination {
+    @include media($smaller-screen) {
+      bottom: -800px;
+    }
     bottom: -130px;
     position: relative;
     #next {
@@ -32,6 +37,12 @@
   @include shift(.8);
   .day-of-week {
     @include span-columns(1.6);
+    @include media($smaller-screen) {
+      @include shift(.75);
+      @include span-columns(4.5);
+      margin-bottom: 90px;
+      font-size: 1.2em;
+    }
     font-weight: bold;
     margin-top: -60px;
     margin-bottom: 20px;
@@ -41,9 +52,16 @@
    
     p {
       margin: 20px 0 25px 5px;
+      @include media($smaller-screen) {
+        margin: 5px;
+      }
     }
 
     .timeslot-label {
+      @include media($smaller-screen) {
+        margin-bottom: -20px;
+      }
+      margin-bottom: 20px;
       font-weight: normal;
       font-size: .8em;
       position: relative;
