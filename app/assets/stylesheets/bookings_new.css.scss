@@ -35,9 +35,7 @@
     font-weight: bold;
     margin-top: -60px;
     margin-bottom: 20px;
-    border-right: 3px solid $light-red;
-    border-left: 3px solid $light-red;
-    
+   
     p {
       margin: 20px 0 25px 5px;
     }
@@ -52,9 +50,6 @@
     }
   }
 
-  input[type=checkbox][disabled] + label {
-    color: $light-gray;
-  }
 }
 
 .user-info {
